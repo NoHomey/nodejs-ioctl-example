@@ -10,9 +10,12 @@ obj-m := $(__name__).o
 
 all: clean
 	$(make_module_action) modules
+	g++ -std=c++11 ioctl_export.cc
+	./a.out
 
 clean:
 	$(make_module_action) clean
+	rm -f ./a.out
 
 load: header
 	dmesg -c

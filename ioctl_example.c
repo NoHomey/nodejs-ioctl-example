@@ -15,10 +15,11 @@ if(return_value) { \
 } \
 
 static dev_t numbers;
+static int return_value;
+static int addition;
 static unsigned long tmp;
 static struct float_n n_A;
 static struct float_n n_B;
-static struct float_n result;
 static int in_use = 0;
 static int major = -1;
 static const int first_minor = 0;
@@ -38,7 +39,7 @@ static inline struct float_n float_n_construct(unsigned long n) {
     return float_n;
 }
 
-static inline unsigned long float_n_destruct(struct float_n& float_n) {
+static inline unsigned long float_n_destruct(struct float_n* float_n) {
     unsigned long n = float_n->integral << 16;
     n |= float_n->fraction;
     return n;
@@ -48,7 +49,8 @@ static int on_open(struct inode* inode, struct file* file) {
     if(in_use) {
         return -EBUSY;
     } else {
-       in_use = 1; 
+        addition = 0;
+        in_use = 1; 
     }
     return 0;
 }
@@ -68,18 +70,28 @@ static long on_unlocked_ioctl(struct file * file, unsigned int command, unsigned
 		return -ENOTTY;
 	}
     switch(command) {
-        #define _IOCTL_EXAMPLE_INPUT() \
-        return get_user(tmp, (unsigned long __user*)argument) \
-
-        #define _IOCTL_EXAMPLE_OUTPUT() \
-        return put_user(tmp, (unsigned long __user*)argument) \
-
         case IOCTL_EXAMPLE_SET: {
-            
+            return_value = get_user(tmp, (unsigned long __user*)argument);
+            n_A = float_n_construct(tmp);
+            addition = 0;
+            return return_value;
         }
-
-        #undef _IOCTL_EXAMPLE_INPUT
-        #undef _IOCTL_EXAMPLE_OUTPUT
+        case IOCTL_EXAMPLE_GET: {
+            tmp = float_n_destruct(&n_A);
+            return put_user(tmp, (unsigned long __user*)argument);
+        }
+        case IOCTL_EXAMPLE_ADD: {
+            return_value = get_user(tmp, (unsigned long __user*)argument);
+            n_B = float_n_construct(tmp);
+            n_B.integral += n_A.integral;
+            n_B.fraction += n_A.fraction;
+            addition = 1;
+            tmp = float_n_destruct(&n_B);
+            return put_user(tmp, (unsigned long __user*)argument) | return_value;
+        }
+        case IOCTL_EXAMPLE_ADDITION: {
+            return addition;
+        }
     }
     return 0;
 }
@@ -104,7 +116,6 @@ static void on_exit(void) {
         unregister_chrdev_region(numbers, minor_count);
     }
 }
-
 
 module_init(on_init);
 module_exit(on_exit);
