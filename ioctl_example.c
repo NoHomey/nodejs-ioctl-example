@@ -83,6 +83,7 @@ static long on_unlocked_ioctl(struct file * file, unsigned int command, unsigned
         case IOCTL_EXAMPLE_ADD: {
             return_value = get_user(tmp, (unsigned long __user*)argument);
             n_B = float_n_construct(tmp);
+            // This is just an example no carage or overflow is handled!
             n_B.integral += n_A.integral;
             n_B.fraction += n_A.fraction;
             addition = 1;

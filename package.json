@@ -23,6 +23,8 @@
     "ioctl-ulong": "0.0.1"
   },
   "devDependencies": {
-    "ioctl-enum": "^1.0.4"
+    "ioctl-enum": "^1.0.4",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1"
   }
 }
