@@ -1,3 +1,5 @@
+/// <reference path="typings/index.d.ts" />
+
 import { ioctl, Ioctl } from 'ioctl-ulong';
 import { IOCTL_EXAMPLE } from './IOCTL_EXAMPLE';
 import { openSync, closeSync } from 'fs';
@@ -58,4 +60,4 @@ console.log(`Result: ${fromUlong(result.data)}`); // Result: 35.9237
 
 checkForAddition(fd); // Addition: true
 
-closeSync(fd); // Release device driver
+closeSync(fd); // Release device driver*/
