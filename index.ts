@@ -1,5 +1,3 @@
-/// <reference path="typings/index.d.ts" />
-
 import { ioctl, Ioctl } from 'ioctl-ulong';
 import { IOCTL_EXAMPLE } from './IOCTL_EXAMPLE';
 import { openIoctlSync } from 'open-ioctl';

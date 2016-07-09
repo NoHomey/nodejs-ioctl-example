@@ -1,5 +1,4 @@
 #define IOCTL_ENUM_TS
-#define IOCTL_ENUM_JS
 #include "node_modules/ioctl-enum/ioctl-enum.h"
 #include "ioctl_example.h"
 
