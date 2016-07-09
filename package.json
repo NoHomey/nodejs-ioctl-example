@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/NoHomey/nodejs-ioctl-example#readme",
   "dependencies": {
-    "ioctl-ulong": "0.0.1"
+    "ioctl-ulong": "0.0.1",
+    "open-ioctl": "^1.0.3"
   },
   "devDependencies": {
     "ioctl-enum": "^1.0.4",

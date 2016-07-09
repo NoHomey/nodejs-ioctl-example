@@ -2,7 +2,8 @@
 
 import { ioctl, Ioctl } from 'ioctl-ulong';
 import { IOCTL_EXAMPLE } from './IOCTL_EXAMPLE';
-import { openSync, closeSync } from 'fs';
+import { openIoctlSync } from 'open-ioctl';
+import { closeSync } from 'fs';
 import { O_NONBLOCK } from 'constants';
 
 function printIoctl(res: Ioctl) {
@@ -33,7 +34,7 @@ function checkForAddition(fd: number) {
 }
 
 let result: Ioctl;
-let fd: number = openSync('/dev/ioctl_example_dev', 3 | O_NONBLOCK); // Open device driver in (3) ioctl non-blocking model;
+let fd: number = openIoctlSync('ioctl_example_dev'); // Open device driver in (3) ioctl non-blocking model;
 
 result = ioctl(fd, IOCTL_EXAMPLE.IOCTL_EXAMPLE_SET, fromFloat(12.3451)); // _IOR
 // .ioctl will be what ioctl returned if it was a non negative integer
