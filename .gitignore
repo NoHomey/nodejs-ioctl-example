@@ -103,3 +103,7 @@ jspm_packages
 # VSCode
 
 .vscode/*
+
+# Typings
+
+.typings/*
