@@ -13,6 +13,7 @@ all: clean
 	$(make_module_action) modules
 	g++ -std=c++11 ioctl_export.cc
 	./a.out
+	$(__npm_bin__)/tsc
 
 install:
 	npm install
@@ -31,11 +32,9 @@ device:
 	mknod $(__device__) c $(__major__) $(__minor__)
 	chmod $(__mode__) $(__device__)
 
-run:
-	$(__npm_bin__)/tsc
-	node index.js
-
-
 unload:
 	rmmod -f $(__name__)
 	rm -f $(__device__)*
+
+reset: clean
+	 rm -fR typings node_modules
