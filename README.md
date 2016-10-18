@@ -4,7 +4,7 @@ A Node.js example to controll ioctl based device driver
 
 # Install
 
-To install all dependencies: ```make installl```
+To install all dependencies: ```npm install```
 
 # Generate all required files
 

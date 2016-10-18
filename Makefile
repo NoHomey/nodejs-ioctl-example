@@ -15,10 +15,6 @@ all: clean
 	./a.out
 	$(__npm_bin__)/tsc
 
-install:
-	npm install
-	$(__npm_bin__)/typings install
-
 clean:
 	$(make_module_action) clean
 	rm -f ./a.out *.js IOCTL_EXAMPLE.*

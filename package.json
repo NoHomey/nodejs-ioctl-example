@@ -11,21 +11,22 @@
     "url": "git+https://github.com/NoHomey/nodejs-ioctl-example.git"
   },
   "keywords": [
-    "ioctl"
+    "ioctl",
+    "example"
   ],
   "author": "Ivo Stratev",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/NoHomey/nodejs-ioctl-example/issues"
   },
   "homepage": "https://github.com/NoHomey/nodejs-ioctl-example#readme",
   "dependencies": {
-    "ioctl-ulong": "^1.0.1",
-    "open-ioctl": "^1.0.4"
+    "ioctl-ulong": "^1.0.3",
+    "open-ioctl": "^1.0.8"
   },
   "devDependencies": {
-    "ioctl-enum": "^1.0.5",
-    "typescript": "^1.8.10",
-    "typings": "^1.3.1"
+    "ioctl-enum": "^1.0.7",
+    "typescript": "^2.0.3",
+    "@types/node": "^6.0.45"
   }
 }
