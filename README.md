@@ -14,9 +14,9 @@ To generate all required files: ```make```
 
 To load device driver in the kernel: ```sudo make load device```
 
-# Sea in action
+# See it in action
 
-To sea in action: ```node index.js```
+To see it in action: ```node index.js```
 
 # Unload device driver from the kernel
 
