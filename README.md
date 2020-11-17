@@ -1,6 +1,6 @@
 # nodejs-ioctl-example
 
-A Node.js example to controll ioctl based device driver
+A Node.js example for controll ioctl based device driver
 
 # Install
 
